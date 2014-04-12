@@ -42,13 +42,15 @@
 
 <p>(Yes, WE LOVE deadlines. Yes, WE LOVE lack of sleep following crazy ideas. And YES!, WE LOVE videogames)   </p>
 
+<p>Note: one great side-effect about this setup is that, using Biicode, we can program the same game to be 100% cross platform. It will run on a Desktop PC and on the RPi handle console, without minor or no code modification at all.</p>
+
 <p>This is going to be long so, please, take your time...</p>
 
 <h3>
 <a name="the-hardware" class="anchor" href="#the-hardware"><span class="octicon octicon-link"></span></a>The Hardware</h3>
 
 <blockquote>
-<p>Keep it simple, and dirty, for first prototype.</p>
+<p>Keep it simple, and dirty.</p>
 </blockquote>
 
 <p>What do we need:</p>
@@ -81,7 +83,7 @@
 <a name="the-shield-prototype-1" class="anchor" href="#the-shield-prototype-1"><span class="octicon octicon-link"></span></a>The Shield (prototype 1)</h3>
 
 <blockquote>
-<p>One shield to rule them all</p>
+<p>One shield to play them all</p>
 </blockquote>
 
 <p>Basic schema:</p>
@@ -92,7 +94,7 @@
 
 <p><img src="http://www.mdblabs.com/img/biiconsole/hw1.JPG" alt="Hardware received"></p>
 
-<p>First hardware scheme:</p>
+<p>First hardware mock-up:</p>
 
 <p><img src="http://www.mdblabs.com/img/biiconsole/hw2.JPG" alt="HW scheme"></p>
 
@@ -119,10 +121,65 @@
 <h3>
 <a name="the-videogame" class="anchor" href="#the-videogame"><span class="octicon octicon-link"></span></a>The videogame</h3>
 
-<p>As we need a framework to work with, without the hardware, we configure a QEMU raspbian image with everything that we need to program our first videogame, and Biicode library.</p>
+<blockquote>
+<p>Flap, flap, little bee.</p>
+</blockquote>
+
+<p>As we need a framework to work with, without the hardware, we configure a QEMU raspbian image with everything that we need for programming our first videogame, and Biicode library.</p>
 
 <p>Did you like flappy bird? You will love Flappy Bee! Jump to get the same hive colors, without touching ground!
-(Ok, it was just a "proof of concept")</p>
+(Ok, it was just a "proof of concept": be kind.)</p>
+
+<p><img src="http://www.mdblabs.com/img/biiconsole/FlappyUb.png" alt="FlappyBee on Ubuntu"></p>
+
+<p>The software scheme:</p>
+
+<p>We are using SDL as the main graphic library. We tried to upload it to Biicode, without positive results. Finally, we decided to used it as one external dependency.</p>
+
+<p>For the buttons and joystick handler, we are using the drogon/wiringPi library. </p>
+
+<p>Physics using Eigen library, also in Biicode.</p>
+
+<h3>
+<a name="the-library" class="anchor" href="#the-library"><span class="octicon octicon-link"></span></a>The library</h3>
+
+<blockquote>
+<p>Genius at work: Please, hold the line.</p>
+</blockquote>
+
+<p>The basic idea:</p>
+
+<p><img src="http://www.mdblabs.com/img/biiconsole/codenplayScheme.png" alt="Library Scheme"></p>
+
+<p>Code'n'Play will include high level classes to handle not only IO interfaces with the console, but will wrap a easy-to-use framework, higher than the SDL, to program videogames, using Biicode.</p>
+
+<p>Example classes:</p>
+
+<ul>
+<li>Joystick class: will handle Joystick inputs.</li>
+<li>Buttons class: will handle Buttons inputs.</li>
+<li>Graph: image and test management, made easy.</li>
+<li>Player: videogame player unity.</li>
+<li>World: videogame main class. Where the game takes place.</li>
+<li>Several objects classes, like mobile object, static object, etc.</li>
+</ul><h3>
+<a name="the-case" class="anchor" href="#the-case"><span class="octicon octicon-link"></span></a>The case</h3>
+
+<blockquote>
+<p>Always inside a nice envelope (as far as you can...)</p>
+</blockquote>
+
+<p>We design a holding structure and case prototype for the shield. The idea was a Plug-and-Play system, where the player/developer only needs to build/buy/obtain the Code'n'Play shield, he would install a custom-made Raspian image, with a Menu to load the games and, using his own Raspberry, will be ready to roll.</p>
+
+<p>We modeled the electronics using a CAD program, and designed the case and structured around it. A video of the assembly and how to used it, after the break.</p>
+
+<p><img src="http://www.mdblabs.com/img/biiconsole/RenderModel1.png" alt="Render model"></p>
+
+<p>We used a Reprap Prusa Mendel printer to print all the parts.</p>
+
+<p><img src="http://www.mdblabs.com/img/biiconsole/printing.JPG" alt="Printing"></p>
+
+<p><img src="http://www.mdblabs.com/img/biiconsole/piezaImpresa.JPG" alt="Printed"></p>
       </section>
     </div>
     <footer>
