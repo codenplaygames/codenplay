@@ -180,6 +180,52 @@
 <p><img src="http://www.mdblabs.com/img/biiconsole/printing.JPG" alt="Printing"></p>
 
 <p><img src="http://www.mdblabs.com/img/biiconsole/piezaImpresa.JPG" alt="Printed"></p>
+
+<h3>
+<a name="cross-compiling" class="anchor" href="#cross-compiling"><span class="octicon octicon-link"></span></a>Cross compiling</h3>
+
+<blockquote>
+<p>Where the problems begin...</p>
+</blockquote>
+
+<p>Bii uses a cross-compiler in order generate the binary file, that will be load into the RPi.</p>
+
+<p>Our library will used other Biicode libraries, like WiringPi or Eigen, which are already there. But, we want to use SDL as our main videogame and media manager library, which is not. </p>
+
+<p>First step: install SDL locally in our RPi, and compile example code. This works fine.</p>
+
+<p>Second step: using bii to generate executables using wiring pi, to control buttons and joysticks, sending it to the RPi via ssh. This also works.</p>
+
+<p>So, what's next? Let's try to, using the pre-compiled SDL from the RPi, compile our videogame using and configuring the cross compilers.</p>
+
+<p>After spending almost a week working on this, we are still working, and the cross compiler cannot locate the pre-compiled SDL...</p>
+
+<h3>
+<a name="conclusions" class="anchor" href="#conclusions"><span class="octicon octicon-link"></span></a>Conclusions</h3>
+
+<blockquote>
+<p>The end?</p>
+</blockquote>
+
+<p>Although we think this console-shield can have a lot of potential, trying to combine the SDL with our library was a big mess.</p>
+
+<p>Trying to compile the code, modifying the biicode's CMAKE files seems the way-to-go. At this moment, headers files are located but it doesn't link the final solution. Some of the libraries are located, but others are not. Also, passing SDL configuration options to the cross compiler looks difficult, or not working.</p>
+
+<p>So, here you are the conclusions:</p>
+
+<ul>
+<li>Biicode is a great tool, with a lot of potential, also on the embedded system side.</li>
+<li>Using the SDL as main library wasn't a good idea. If we would use freeglut (already in Biicode) instead of the SDL, we were able to achieved a more usable videogame library.</li>
+<li>On the other side, controllers and hardware interfaces were easy to use thanks to WiringPi library.</li>
+</ul><p>Next steps:</p>
+
+<ul>
+<li>We would like to made a second prototype, more robust and lighter.</li>
+<li>We are evaluating the use of freeglut instead of SDL for the graphics.</li>
+</ul><p>Finally, Biicode contest was a great way to made us learn the tool, and it push us forward to finish our prototype, so, thank you! :)</p>
+
+<h3>
+<a name="stay-tuned-for-further-updates" class="anchor" href="#stay-tuned-for-further-updates"><span class="octicon octicon-link"></span></a>Stay tuned for further updates!</h3>
       </section>
     </div>
     <footer>
